@@ -5,7 +5,8 @@ import AppBar from "@material-ui/core/AppBar"
 import ToolBar from "@material-ui/core/Toolbar"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
-import TodoForm from '../TodoForm'
+import TodoForm from './TodoForm'
+import TodoList from './TodoList'
 
 // -TodoApp
 //      -TodoForm
@@ -36,7 +37,8 @@ export const TodoApp = () => {
                         <Typography color='inherit'>Todos With Hooks</Typography>
                     </ToolBar>
                 </AppBar>
-                <TodoForm todos={todos}/>
+                <TodoForm />
+                <TodoList todos={todos}/>
             </Paper>
         </div>
     )
