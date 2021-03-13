@@ -6,7 +6,6 @@ const useForm = (inputText) => {
         setCustomHook(e.target.value)
     }
     const resetInput = (e) =>{
-        e.preventDefault();
         setCustomHook("");
     }
     // You can pass in as many functions as u want to return to use

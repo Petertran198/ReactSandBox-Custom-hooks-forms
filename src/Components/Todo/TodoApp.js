@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
-
+import useLocalStorage from '../../CustomHooksEx/useLocalStorage'
 // -TodoApp
 //      -TodoForm
 //      -TodoList
@@ -17,10 +17,14 @@ export const TodoApp = () => {
     const initalTodos = [
         {id: 1, task: "Clean Fishtank", completed: false},
         {id: 2, task: "Wash Car", completed: true},
-        {id: 1, task: "Mow Lawn", completed: false}
+        {id: 3, task: "Mow Lawn", completed: false}
     ]
-    const [todos, setTodos] = useState(initalTodos);
+    const [todos, setTodos] = useLocalStorage("todos", initalTodos);
 
+    const addTodo = (input) =>{
+        let addedTodo = [...todos, {id: 4, task: input , completed: false}];
+        setTodos(addedTodo);
+    }
     return (
         <div>
             <Paper 
@@ -37,7 +41,7 @@ export const TodoApp = () => {
                         <Typography color='inherit'>Todos With Hooks</Typography>
                     </ToolBar>
                 </AppBar>
-                <TodoForm />
+                <TodoForm addTodo={addTodo}/>
                 <TodoList todos={todos}/>
             </Paper>
         </div>

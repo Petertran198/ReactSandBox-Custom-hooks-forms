@@ -5,9 +5,15 @@ import useForm from '../../CustomHooksEx/useForm';
 
 const TodoForm = (props) => {
     const [input, setInput, resetInput] = useForm('');
+
+    const submitedTodo =(e)=>{
+        e.preventDefault()
+        props.addTodo(input);
+        resetInput();
+    }
     return (
         <Paper>
-            <form >
+            <form onSubmit={ e => submitedTodo(e)} >
                 <TextField id="standard-basic" label="Standard" fullWidth value={input} onChange={setInput}/>
             </form>
         </Paper>
