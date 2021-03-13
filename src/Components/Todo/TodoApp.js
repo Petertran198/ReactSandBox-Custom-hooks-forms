@@ -5,13 +5,21 @@ import AppBar from "@material-ui/core/AppBar"
 import ToolBar from "@material-ui/core/Toolbar"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
-export const Todo = () => {
-    const [todos, setTodos] = useState()
+import TodoForm from '../TodoForm'
+
+// -TodoApp
+//      -TodoForm
+//      -TodoList
+//      -TodoItem
+
+export const TodoApp = () => {
     const initalTodos = [
         {id: 1, task: "Clean Fishtank", completed: false},
         {id: 2, task: "Wash Car", completed: true},
         {id: 1, task: "Mow Lawn", completed: false}
     ]
+    const [todos, setTodos] = useState(initalTodos);
+
     return (
         <div>
             <Paper 
@@ -22,14 +30,16 @@ export const Todo = () => {
                     backgroundColor: "#fafafa"
                 }}
                 elevation={0}
-            />
-            <AppBar color="primary" position="static" style={{height: "64px"}}>
-                <ToolBar>
-                    <Typography color='inherit'>Todos With Hooks</Typography>
-                </ToolBar>
-            </AppBar>
+            >
+                <AppBar color="primary" position="static" style={{height: "64px"}}>
+                    <ToolBar>
+                        <Typography color='inherit'>Todos With Hooks</Typography>
+                    </ToolBar>
+                </AppBar>
+                <TodoForm todos={todos}/>
+            </Paper>
         </div>
     )
 }
 
-export default Todo;
+export default TodoApp;

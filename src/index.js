@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Todo from './Components/Todo/Todo'
+import TodoApp from './Components/Todo/TodoApp'
 // import Form from './CustomHooksEx/Form';
-
 ReactDOM.render(
   <React.StrictMode>
-    <Todo/>
+    <TodoApp/>
   </React.StrictMode>,
   document.getElementById('root')
 );
