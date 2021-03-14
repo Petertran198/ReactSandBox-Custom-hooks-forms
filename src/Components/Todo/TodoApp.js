@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button"
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import useLocalStorage from '../../CustomHooksEx/useLocalStorage'
+
 // -TodoApp
 //      -TodoForm
 //      -TodoList
@@ -15,7 +16,7 @@ import useLocalStorage from '../../CustomHooksEx/useLocalStorage'
 
 export const TodoApp = () => {
     const initalTodos = [
-        {id: 1, task: "Clean Fishtank", completed: false},
+        {id: 1, task: "Clean Fishtank", completed: true},
         {id: 2, task: "Wash Car", completed: true},
         {id: 3, task: "Mow Lawn", completed: false}
     ]
@@ -24,6 +25,18 @@ export const TodoApp = () => {
     const addTodo = (input) =>{
         let addedTodo = [...todos, {id: 4, task: input , completed: false}];
         setTodos(addedTodo);
+    }
+
+    const toggleTodoCheckBox = (passedInTodo) =>{
+        //filter out the passedInTodo and toggle the completed param 
+        const changedTodo = todos.map(todo =>
+            todo.id === passedInTodo.id
+              ? { ...todo, completed: !todo.completed }
+              : todo
+          );
+
+        console.log(changedTodo);
+        setTodos(changedTodo)
     }
     return (
         <div>
@@ -44,7 +57,10 @@ export const TodoApp = () => {
                 <Grid container justify="center" style={{marginTop: "1rem"}}>
                     <Grid item xs={12} sm={12} md={8} lg={8}>
                         <TodoForm addTodo={addTodo}/>
-                        <TodoList todos={todos}/>
+                        <TodoList 
+                            todos={todos}
+                            toggleTodoCheckBox={toggleTodoCheckBox}
+                        />
                     </Grid>
                 </Grid>
             </Paper>

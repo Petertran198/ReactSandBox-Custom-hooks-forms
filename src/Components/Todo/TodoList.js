@@ -9,7 +9,11 @@ const TodoList = (props) => {
             {
                 props.todos.map(todo => 
                     <>
-                        <TodoItem todo={todo} key={todo.id}/>
+                        <TodoItem 
+                            todo={todo}
+                            key={todo.id} 
+                            toggleTodoCheckBox={props.toggleTodoCheckBox}
+                        />
                         <Divider/>
                     </>
             )}
