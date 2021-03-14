@@ -13,13 +13,13 @@ const TodoItem = (props) => {
                 checked={props.todo.completed}
                 onClick={()=> props.toggleTodoCheckBox(props.todo)}            
             />
-            <ListItemText>
+            <ListItemText style={{textDecoration: props.todo.completed && "line-through" }}>
                 {props.todo.task}
             </ListItemText>
-            <IconButton>
+            <IconButton aria-label="Edit">
                 <Edit/>
             </IconButton>
-            <IconButton>
+            <IconButton aria-label="Delete" onClick={()=> props.handleDeleteTodoTask(props.todo.id)}>
                 <Delete/>
             </IconButton>            
 

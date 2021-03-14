@@ -13,6 +13,7 @@ const TodoList = (props) => {
                             todo={todo}
                             key={todo.id} 
                             toggleTodoCheckBox={props.toggleTodoCheckBox}
+                            handleDeleteTodoTask={props.handleDeleteTodoTask}
                         />
                         <Divider/>
                     </>

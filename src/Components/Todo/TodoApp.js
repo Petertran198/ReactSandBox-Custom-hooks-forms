@@ -34,9 +34,12 @@ export const TodoApp = () => {
               ? { ...todo, completed: !todo.completed }
               : todo
           );
-
-        console.log(changedTodo);
         setTodos(changedTodo)
+    }
+
+    const handleDeleteTodoTask = (id) =>{
+        const t = todos.filter(todo => todo.id !== id);
+        setTodos(t);
     }
     return (
         <div>
@@ -60,6 +63,7 @@ export const TodoApp = () => {
                         <TodoList 
                             todos={todos}
                             toggleTodoCheckBox={toggleTodoCheckBox}
+                            handleDeleteTodoTask={handleDeleteTodoTask}
                         />
                     </Grid>
                 </Grid>
