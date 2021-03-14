@@ -41,8 +41,12 @@ export const TodoApp = () => {
                         <Typography color='inherit'>Todos With Hooks</Typography>
                     </ToolBar>
                 </AppBar>
-                <TodoForm addTodo={addTodo}/>
-                <TodoList todos={todos}/>
+                <Grid container justify="center" style={{marginTop: "1rem"}}>
+                    <Grid item xs={12} sm={12} md={8} lg={8}>
+                        <TodoForm addTodo={addTodo}/>
+                        <TodoList todos={todos}/>
+                    </Grid>
+                </Grid>
             </Paper>
         </div>
     )

@@ -12,9 +12,15 @@ const TodoForm = (props) => {
         resetInput();
     }
     return (
-        <Paper>
+        <Paper style={{margin: "1rem 0", padding: "0 1rem"}}>
             <form onSubmit={ e => submitedTodo(e)} >
-                <TextField id="standard-basic" label="Standard" fullWidth value={input} onChange={setInput}/>
+                <TextField 
+                    id="standard-basic" 
+                    label="Standard" 
+                    fullWidth value={input} 
+                    onChange={setInput} 
+                    margin="normal"
+                />
             </form>
         </Paper>
     )
