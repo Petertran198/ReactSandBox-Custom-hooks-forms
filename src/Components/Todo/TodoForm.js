@@ -16,7 +16,7 @@ const TodoForm = (props) => {
             <form onSubmit={ e => submitedTodo(e)} >
                 <TextField 
                     id="standard-basic" 
-                    label="Standard" 
+                    label="Add New Todo" 
                     fullWidth value={input} 
                     onChange={setInput} 
                     margin="normal"

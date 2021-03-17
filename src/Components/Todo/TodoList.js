@@ -14,6 +14,7 @@ const TodoList = (props) => {
                             key={todo.id} 
                             toggleTodoCheckBox={props.toggleTodoCheckBox}
                             handleDeleteTodoTask={props.handleDeleteTodoTask}
+                            updateTodo={props.updateTodo}
                         />
                         <Divider/>
                     </>

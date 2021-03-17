@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button"
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import useLocalStorage from '../../CustomHooksEx/useLocalStorage'
+import { v4 as uuidv4 } from 'uuid';
 
 // -TodoApp
 //      -TodoForm
@@ -16,14 +17,14 @@ import useLocalStorage from '../../CustomHooksEx/useLocalStorage'
 
 export const TodoApp = () => {
     const initalTodos = [
-        {id: 1, task: "Clean Fishtank", completed: true},
-        {id: 2, task: "Wash Car", completed: true},
-        {id: 3, task: "Mow Lawn", completed: false}
+        {id: 1, task: "Clean the Fishtank", completed: true},
+        {id: 2, task: "Wash my Car", completed: true},
+        {id: 3, task: "Mow the Lawn", completed: false}
     ]
     const [todos, setTodos] = useLocalStorage("todos", initalTodos);
 
     const addTodo = (input) =>{
-        let addedTodo = [...todos, {id: 4, task: input , completed: false}];
+        let addedTodo = [...todos, {id: uuidv4(), task: input , completed: false}];
         setTodos(addedTodo);
     }
 
@@ -31,15 +32,26 @@ export const TodoApp = () => {
         //filter out the passedInTodo and toggle the completed param 
         const changedTodo = todos.map(todo =>
             todo.id === passedInTodo.id
-              ? { ...todo, completed: !todo.completed }
+              ? { ...passedInTodo, completed: !todo.completed }
               : todo
           );
         setTodos(changedTodo)
     }
+    
+
+    const updateTodo = (passedInTodo, updatedValue) => {
+        const changedTodo = todos.map(todo =>
+            todo.id === passedInTodo.id
+              ? { ...passedInTodo, task: updatedValue }
+              : todo
+          );
+
+        setTodos(changedTodo);
+    }
 
     const handleDeleteTodoTask = (id) =>{
-        const t = todos.filter(todo => todo.id !== id);
-        setTodos(t);
+        const updatedTodos = todos.filter(todo => todo.id !== id);
+        setTodos(updatedTodos);
     }
     return (
         <div>
@@ -54,7 +66,7 @@ export const TodoApp = () => {
             >
                 <AppBar color="primary" position="static" style={{height: "64px"}}>
                     <ToolBar>
-                        <Typography color='inherit'>Todos With Hooks</Typography>
+                        <Typography color='inherit'>Todo App</Typography>
                     </ToolBar>
                 </AppBar>
                 <Grid container justify="center" style={{marginTop: "1rem"}}>
@@ -64,6 +76,7 @@ export const TodoApp = () => {
                             todos={todos}
                             toggleTodoCheckBox={toggleTodoCheckBox}
                             handleDeleteTodoTask={handleDeleteTodoTask}
+                            updateTodo={updateTodo}
                         />
                     </Grid>
                 </Grid>
