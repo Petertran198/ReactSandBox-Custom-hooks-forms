@@ -5,7 +5,7 @@ const useForm = (inputText) => {
     const setInput = (e) =>{
         setCustomHook(e.target.value)
     }
-    const resetInput = (e) =>{
+    const resetInput = () =>{
         setCustomHook("");
     }
     // You can pass in as many functions as u want to return to use
