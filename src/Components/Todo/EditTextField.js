@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import useForm from "../../CustomHooksEx/useForm";
 const EditTextField = (props) => {
-    const [task, setTask, resetInput] = useForm(props.todo.task);
+    const [task, setTask] = useForm(props.todo.task);
 
     return (
         <form onSubmit={e => {

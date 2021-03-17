@@ -47,7 +47,7 @@ const TodoItem = (props) => {
             <IconButton aria-label="Edit" onClick={setIsEditing}>
                 <Edit style={{ color: green[800] }}/>
             </IconButton>
-            <IconButton variant="outlined" color="Secondary" onClick={handleClickOpen}>
+            <IconButton variant="outlined" color="secondary" onClick={handleClickOpen}>
                 <Delete/>
             </IconButton>
             <Dialog

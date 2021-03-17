@@ -17,14 +17,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const TodoApp = () => {
     const initalTodos = [
-        {id: 1, task: "Clean the Fishtank", completed: true},
-        {id: 2, task: "Wash my Car", completed: true},
-        {id: 3, task: "Mow the Lawn", completed: false}
+        {id: 1, task: "Clean the Fishtank", completed: true, key: 1},
+        {id: 2, task: "Wash my Car", completed: true, key: 2},
+        {id: 3, task: "Mow the Lawn", completed: false, key: 3}
     ]
     const [todos, setTodos] = useLocalStorage("todos", initalTodos);
 
     const addTodo = (input) =>{
-        let addedTodo = [...todos, {id: uuidv4(), task: input , completed: false}];
+        let addedTodo = [...todos, {id: uuidv4(), task: input , completed: false, key: uuidv4()}];
         setTodos(addedTodo);
     }
 
@@ -45,7 +45,7 @@ export const TodoApp = () => {
               ? { ...passedInTodo, task: updatedValue }
               : todo
           );
-
+        console.log(passedInTodo.id)
         setTodos(changedTodo);
     }
 

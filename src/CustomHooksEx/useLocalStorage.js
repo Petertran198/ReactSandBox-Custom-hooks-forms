@@ -32,6 +32,7 @@ const useLocalStorage = (key, initalValue) => {
     //Runs everytime the value changes
     //Also runs once when the program starts saving key & value to localStorage
     useEffect(() => {  
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         //convert the value to a JSON string obj
         localStorage.setItem(key, JSON.stringify(value))
     }, [value]);
